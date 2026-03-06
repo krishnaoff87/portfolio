@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Krishnandan Sha | Data Analyst</title>
+
+<meta name="description" content="Krishnandan Sha Data Analyst Portfolio - SQL, Excel, Power BI, R | Healthcare & Business Analytics">
+<meta name="author" content="Krishnandan Sha">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial;
+scroll-behavior:smooth;
+}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* AI GRID BACKGROUND */
+
+.grid{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-2;
+animation:gridmove 20s linear infinite;
+}
+
+@keyframes gridmove{
+0%{transform:translateY(0)}
+100%{transform:translateY(40px)}
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:120vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+perspective:800px;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+opacity:0.7;
+}
+
+.hero-content{
+transition:transform .2s;
+}
+
+.hero h1{
+font-size:64px;
+font-weight:600;
+}
+
+.hero p{
+font-size:22px;
+margin-top:10px;
+opacity:.9;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:12px 26px;
+border-radius:30px;
+background:#fff;
+color:#000;
+text-decoration:none;
+font-weight:600;
+}
+
+/* SECTIONS */
+
+section{
+max-width:1100px;
+margin:auto;
+padding:120px 20px;
+opacity:0;
+transform:translateY(80px);
+transition:1s;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+font-size:40px;
+margin-bottom:30px;
+}
+
+/* CARDS */
+
+.card{
+background:#111;
+padding:28px;
+border-radius:14px;
+margin-top:20px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+/* SKILLS */
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:16px;
+}
+
+.skill{
+background:#111;
+padding:14px;
+border-radius:8px;
+text-align:center;
+}
+
+/* PROJECTS */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
+}
+
+.project-img{
+width:100%;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:60px;
+opacity:.7;
+}
+
+a{color:white}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<div class="hero">
+
+<video id="heroVideo" preload="auto">
+<source src="hero_background.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content" id="heroContent">
+
+<h1>Krishnandan Sha</h1>
+
+<p>SQL • Excel • Power BI • R | Data Analytics</p>
+
+<a class="btn" href="Krishnandan_Sha.pdf" download>Download Resume</a>
+
+</div>
+
+</div>
+
+<section>
+
+<h2>About</h2>
+
+<div class="card">
+
+<p>
+Data Analyst with hands-on experience in SQL, Excel, Power BI, and R, specializing in healthcare and business
+data analysis. Proven ability to clean, analyze, and model large datasets to uncover trends, build dashboards,
+and deliver actionable insights that support data-driven decision-making.
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Skills</h2>
+
+<div class="skills">
+
+<div class="skill">SQL</div>
+<div class="skill">Excel</div>
+<div class="skill">Power BI</div>
+<div class="skill">R Programming</div>
+<div class="skill">Data Cleaning</div>
+<div class="skill">EDA</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Case Study Highlights</h2>
+
+<div class="card">
+
+<h3>Cyclistic Bike User Behavior</h3>
+
+<p style="margin-top:10px">
+
+Analyzed differences between annual members and casual riders to identify
+revenue opportunities and seasonal demand patterns.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Stroke Prediction Model</h3>
+
+<p style="margin-top:10px">
+
+Analyzed 5,110 healthcare records and built ML models achieving ROC‑AUC 0.84.
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>GitHub Projects</h2>
+
+<div id="github-projects" class="projects"></div>
+
+</section>
+
+<section>
+
+<h2>Contact</h2>
+
+<div class="card">
+
+<p>Email: krishna.off87@gmail.com</p>
+
+<p>LinkedIn:
+<a href="https://www.linkedin.com/in/krishnandananalyst/" target="_blank">
+linkedin.com/in/krishnandananalyst
+</a>
+</p>
+
+<p>GitHub:
+<a href="https://github.com/krishnaoff87" target="_blank">
+github.com/krishnaoff87
+</a>
+</p>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Krishnandan Sha
+</footer>
+
+<script>
+
+/* SCROLL VIDEO */
+
+const video=document.getElementById("heroVideo");
+
+window.addEventListener("scroll",()=>{
+
+let scroll=window.scrollY;
+let percent=scroll/window.innerHeight;
+
+video.currentTime=8*percent;
+
+});
+
+/* HERO 3D EFFECT */
+
+const hero=document.getElementById("heroContent");
+
+document.addEventListener("mousemove",(e)=>{
+
+let x=(window.innerWidth/2-e.clientX)/40;
+let y=(window.innerHeight/2-e.clientY)/40;
+
+hero.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+
+});
+
+/* SECTION REVEAL */
+
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+sections.forEach(sec=>{
+
+let top=sec.getBoundingClientRect().top;
+
+if(top<window.innerHeight-120){
+
+sec.classList.add("show");
+
+}
+
+});
+
+});
+
+/* GITHUB PROJECTS AUTO LOAD */
+
+fetch("https://api.github.com/users/krishnaoff87/repos?sort=updated")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+const container=document.getElementById("github-projects");
+
+data.slice(0,6).forEach(repo=>{
+
+let card=document.createElement("div");
+
+card.className="card";
+
+let img="https://opengraph.githubassets.com/1/"+repo.full_name;
+
+card.innerHTML=`
+<h3>${repo.name}</h3>
+<img class="project-img" src="${img}">
+<p style="margin-top:10px">${repo.description || "GitHub repository project"}</p>
+<a href="${repo.html_url}" target="_blank" style="display:inline-block;margin-top:12px">View Project →</a>
+`;
+
+container.appendChild(card);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
