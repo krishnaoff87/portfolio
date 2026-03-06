@@ -366,18 +366,31 @@ video.play();
 
 /* AUTO SCROLL CONTROL */
 
-let autoScrollEnabled=true;
+let autoScrollEnabled = true;
 
-window.addEventListener("wheel",(e)=>{
+/* Desktop scroll detection */
 
-if(e.deltaY<0){
+window.addEventListener("wheel", (e) => {
 
-autoScrollEnabled=false;
-
-}
+autoScrollEnabled = false;
 
 });
 
+/* Mobile touch detection */
+
+window.addEventListener("touchstart", () => {
+
+autoScrollEnabled = false;
+
+});
+
+/* Mobile swipe detection */
+
+window.addEventListener("touchmove", () => {
+
+autoScrollEnabled = false;
+
+});
 /* SMOOTH SCROLL FUNCTION */
 
 function smoothScrollToAbout(){
