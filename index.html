@@ -372,8 +372,9 @@ let autoScrollEnabled = true;
 
 window.addEventListener("wheel", (e) => {
 
+if(e.deltaY<0){
 autoScrollEnabled = false;
-
+}
 });
 
 /* Mobile touch detection */
