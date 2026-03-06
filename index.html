@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -8,209 +8,301 @@
 
 <title>Krishnandan Sha | Data Analyst</title>
 
-<meta name="description" content="Krishnandan Sha Data Analyst Portfolio - SQL, Excel, Power BI, R | Healthcare & Business Analytics">
-<meta name="author" content="Krishnandan Sha">
-
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial;
-scroll-behavior:smooth;
+font-family:-apple-system,BlinkMacSystemFont,Segoe UI;
 }
 
 body{
 background:#000;
-color:#fff;
+color:white;
 overflow-x:hidden;
 }
 
-/* AI GRID BACKGROUND */
+/* GALAXY BACKGROUND */
 
-.grid{
+body::before{
+
+content:"";
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
+
 background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:40px 40px;
-z-index:-2;
-animation:gridmove 20s linear infinite;
+radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+radial-gradient(2px 2px at 200px 80px,#fff,transparent),
+radial-gradient(1px 1px at 150px 120px,#fff,transparent),
+radial-gradient(2px 2px at 300px 200px,#fff,transparent),
+radial-gradient(1px 1px at 500px 150px,#fff,transparent);
+
+background-size:600px 600px;
+
+opacity:.4;
+
+z-index:-3;
+
 }
 
-@keyframes gridmove{
-0%{transform:translateY(0)}
-100%{transform:translateY(40px)}
+/* VIDEO BACKGROUND */
+
+.hero-video{
+
+position:fixed;
+
+top:0;
+
+left:-23%;
+
+width:120%;
+
+height:100vh;
+
+object-fit:cover;
+
+z-index:-1;
+
+transition:filter .8s ease;
+
+/* oval blur edges */
+
+mask-image: radial-gradient(
+ellipse at center,
+rgba(0,0,0,1) 55%,
+rgba(0,0,0,.5) 70%,
+rgba(0,0,0,0) 100%
+);
+
 }
 
 /* HERO */
 
 .hero{
-position:relative;
-height:120vh;
+
+height:100vh;
+
 display:flex;
+
 align-items:center;
-justify-content:center;
-text-align:center;
-overflow:hidden;
-perspective:800px;
+
+justify-content:flex-end;
+
+padding-right:10%;
+
+text-align:right;
+
 }
 
-.hero video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:-1;
-opacity:0.7;
-}
+/* GLASS HERO CONTENT */
 
 .hero-content{
-transition:transform .2s;
+
+background:rgba(255,255,255,.2);
+
+backdrop-filter:blur(2px);
+
+padding:40px;
+
+border-radius:20px;
+
 }
 
 .hero h1{
+
 font-size:64px;
-font-weight:600;
+
 }
 
 .hero p{
+
 font-size:22px;
+
 margin-top:10px;
-opacity:.9;
+
 }
 
 .btn{
+
 display:inline-block;
+
 margin-top:25px;
+
 padding:12px 26px;
+
 border-radius:30px;
-background:#fff;
-color:#000;
+
+background:white;
+
+color:black;
+
 text-decoration:none;
+
 font-weight:600;
+
 }
 
 /* SECTIONS */
 
 section{
+
 max-width:1100px;
+
 margin:auto;
-padding:120px 20px;
+
+padding:140px 20px;
+
 opacity:0;
-transform:translateY(80px);
+
+transform:translateY(60px);
+
 transition:1s;
+
 }
 
 section.show{
+
 opacity:1;
+
 transform:translateY(0);
+
 }
 
 h2{
-font-size:40px;
-margin-bottom:30px;
-}
 
-/* CARDS */
+font-size:40px;
+
+margin-bottom:30px;
+
+}
 
 .card{
-background:#111;
-padding:28px;
-border-radius:14px;
-margin-top:20px;
-transition:.4s;
-}
 
-.card:hover{
-transform:translateY(-8px);
+background:#111;
+
+padding:28px;
+
+border-radius:14px;
+
+margin-top:20px;
+
 }
 
 /* SKILLS */
 
 .skills{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+
 gap:16px;
+
 }
 
 .skill{
+
 background:#111;
+
 padding:14px;
+
 border-radius:8px;
+
 text-align:center;
+
 }
 
 /* PROJECTS */
 
 .projects{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
 gap:24px;
+
 }
 
 .project-img{
-width:100%;
-border-radius:10px;
-margin-top:10px;
-}
 
-/* FOOTER */
+width:100%;
+
+border-radius:10px;
+
+margin-top:10px;
+
+}
 
 footer{
+
 text-align:center;
+
 padding:60px;
+
 opacity:.7;
+
 }
 
-a{color:white}
-
 </style>
+
 </head>
 
 <body>
 
-<div class="grid"></div>
+<!-- VIDEO -->
+
+<video id="heroVideo" class="hero-video" muted playsinline autoplay>
+
+<source src="hero_background.mp4" type="video/mp4">
+
+</video>
+
+<!-- HERO -->
 
 <div class="hero">
 
-<video id="heroVideo" muted playsinline preload="auto">
-<source src="hero_background.mp4" type="video/mp4">
-</video>
-
-<div class="hero-content" id="heroContent">
+<div class="hero-content">
 
 <h1>Krishnandan Sha</h1>
 
 <p>SQL • Excel • Power BI • R | Data Analytics</p>
 
-<a class="btn" href="Krishnandan_Sha.pdf" download>Download Resume</a>
+<a class="btn" href="Krishnandan_Sha.pdf" download>
+
+Download Resume
+
+</a>
 
 </div>
 
 </div>
 
-<section>
+<!-- ABOUT -->
+
+<section id="about">
 
 <h2>About</h2>
 
 <div class="card">
 
-<p>
-Data Analyst with hands-on experience in SQL, Excel, Power BI, and R, specializing in healthcare and business
-data analysis. Proven ability to clean, analyze, and model large datasets to uncover trends, build dashboards,
-and deliver actionable insights that support data-driven decision-making.
+I am a Data Analyst passionate about transforming raw data into meaningful insights that drive smarter business decisions. I specialize in data cleaning, analysis, and visualization using tools such as SQL, Excel, Power BI, and R. My analytical approach focuses on identifying patterns, uncovering trends, and translating complex datasets into clear, actionable insights.
 
-</p>
+Through hands-on projects and professional certifications, I have developed strong capabilities in exploratory data analysis, dashboard creation, and statistical modeling. I have worked with real-world datasets including healthcare records and consumer behavior data to perform data preparation, feature engineering, predictive modeling, and business insight generation.
+
+My project work includes building machine learning models for stroke risk prediction and performing end-to-end behavioral analysis of bike-sharing users using R. These projects strengthened my ability to work across the full analytics workflow — from data cleaning and transformation to insight communication and decision support.
+
+I continuously improve my analytical skills through practical simulations and industry-style projects, focusing on solving real business problems using data. My goal is to contribute as a data analyst who not only analyzes data but also delivers insights that help organizations make informed, data-driven decisions.
 
 </div>
 
 </section>
+
+<!-- SKILLS -->
 
 <section>
 
@@ -229,36 +321,7 @@ and deliver actionable insights that support data-driven decision-making.
 
 </section>
 
-<section>
-
-<h2>Case Study Highlights</h2>
-
-<div class="card">
-
-<h3>Cyclistic Bike User Behavior</h3>
-
-<p style="margin-top:10px">
-
-Analyzed differences between annual members and casual riders to identify
-revenue opportunities and seasonal demand patterns.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Stroke Prediction Model</h3>
-
-<p style="margin-top:10px">
-
-Analyzed 5,110 healthcare records and built ML models achieving ROC‑AUC 0.84.
-
-</p>
-
-</div>
-
-</section>
+<!-- PROJECTS -->
 
 <section>
 
@@ -268,6 +331,8 @@ Analyzed 5,110 healthcare records and built ML models achieving ROC‑AUC 0.84.
 
 </section>
 
+<!-- CONTACT -->
+
 <section>
 
 <h2>Contact</h2>
@@ -276,16 +341,28 @@ Analyzed 5,110 healthcare records and built ML models achieving ROC‑AUC 0.84.
 
 <p>Email: krishna.off87@gmail.com</p>
 
-<p>LinkedIn:
+<p>
+
+LinkedIn:
+
 <a href="https://www.linkedin.com/in/krishnandananalyst/" target="_blank">
+
 linkedin.com/in/krishnandananalyst
+
 </a>
+
 </p>
 
-<p>GitHub:
+<p>
+
+GitHub:
+
 <a href="https://github.com/krishnaoff87" target="_blank">
+
 github.com/krishnaoff87
+
 </a>
+
 </p>
 
 </div>
@@ -293,34 +370,46 @@ github.com/krishnaoff87
 </section>
 
 <footer>
+
 © 2026 Krishnandan Sha
+
 </footer>
 
 <script>
 
-/* SCROLL VIDEO */
+/* VIDEO LOOP WITH 3s DELAY */
 
 const video=document.getElementById("heroVideo");
 
-window.addEventListener("scroll",()=>{
+video.addEventListener("ended",()=>{
 
-let scroll=window.scrollY;
-let percent=scroll/window.innerHeight;
+setTimeout(()=>{
 
-video.currentTime=8*percent;
+video.currentTime=0;
+
+video.play();
+
+},3000)
 
 });
 
-/* HERO 3D EFFECT */
+/* ABOUT BLUR */
 
-const hero=document.getElementById("heroContent");
+const about=document.getElementById("about");
 
-document.addEventListener("mousemove",(e)=>{
+window.addEventListener("scroll",()=>{
 
-let x=(window.innerWidth/2-e.clientX)/40;
-let y=(window.innerHeight/2-e.clientY)/40;
+const rect=about.getBoundingClientRect();
 
-hero.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+if(rect.top<window.innerHeight*0.6){
+
+video.style.filter="blur(12px)";
+
+}else{
+
+video.style.filter="blur(0px)";
+
+}
 
 });
 
@@ -332,7 +421,7 @@ window.addEventListener("scroll",()=>{
 
 sections.forEach(sec=>{
 
-let top=sec.getBoundingClientRect().top;
+const top=sec.getBoundingClientRect().top;
 
 if(top<window.innerHeight-120){
 
@@ -344,7 +433,7 @@ sec.classList.add("show");
 
 });
 
-/* GITHUB PROJECTS AUTO LOAD */
+/* GITHUB PROJECTS */
 
 fetch("https://api.github.com/users/krishnaoff87/repos?sort=updated")
 
@@ -363,10 +452,25 @@ card.className="card";
 let img="https://opengraph.githubassets.com/1/"+repo.full_name;
 
 card.innerHTML=`
+
 <h3>${repo.name}</h3>
+
 <img class="project-img" src="${img}">
-<p style="margin-top:10px">${repo.description || "GitHub repository project"}</p>
-<a href="${repo.html_url}" target="_blank" style="display:inline-block;margin-top:12px">View Project →</a>
+
+<p style="margin-top:10px">
+
+${repo.description || "GitHub project repository"}
+
+</p>
+
+<a href="${repo.html_url}" target="_blank"
+
+style="display:inline-block;margin-top:12px">
+
+View Project →
+
+</a>
+
 `;
 
 container.appendChild(card);
@@ -378,4 +482,5 @@ container.appendChild(card);
 </script>
 
 </body>
+
 </html>
