@@ -54,22 +54,14 @@ z-index:-3;
 .hero-video{
 
 position:fixed;
-
 top:0;
-
 left:-23%;
-
 width:120%;
-
 height:100vh;
-
 object-fit:cover;
-
 z-index:-1;
 
 transition:filter .8s ease;
-
-/* oval blur edges */
 
 mask-image: radial-gradient(
 ellipse at center,
@@ -85,29 +77,20 @@ rgba(0,0,0,0) 100%
 .hero{
 
 height:100vh;
-
 display:flex;
-
 align-items:center;
-
 justify-content:flex-end;
-
 padding-right:10%;
-
 text-align:right;
 
 }
 
-/* GLASS HERO CONTENT */
-
 .hero-content{
 
 background:rgba(255,255,255,.2);
-
-backdrop-filter:blur(2px);
+backdrop-filter:blur(3px);
 
 padding:40px;
-
 border-radius:20px;
 
 }
@@ -121,28 +104,39 @@ font-size:64px;
 .hero p{
 
 font-size:22px;
-
 margin-top:10px;
 
 }
 
-.btn{
+/* BUTTON */
+
+.resume-btn{
 
 display:inline-block;
-
 margin-top:25px;
-
 padding:12px 26px;
-
 border-radius:30px;
-
 background:white;
-
 color:black;
-
 text-decoration:none;
-
 font-weight:600;
+
+transition:all .8s ease;
+
+}
+
+/* FLOATING BUTTON */
+
+.resume-btn.floating{
+
+position:fixed;
+top:-100px;
+right:-100px;
+
+padding:10px 18px;
+font-size:14px;
+
+z-index:999;
 
 }
 
@@ -151,15 +145,11 @@ font-weight:600;
 section{
 
 max-width:1100px;
-
 margin:auto;
-
 padding:140px 20px;
 
 opacity:0;
-
 transform:translateY(60px);
-
 transition:1s;
 
 }
@@ -167,7 +157,6 @@ transition:1s;
 section.show{
 
 opacity:1;
-
 transform:translateY(0);
 
 }
@@ -175,7 +164,6 @@ transform:translateY(0);
 h2{
 
 font-size:40px;
-
 margin-bottom:30px;
 
 }
@@ -183,11 +171,8 @@ margin-bottom:30px;
 .card{
 
 background:#111;
-
 padding:28px;
-
 border-radius:14px;
-
 margin-top:20px;
 
 }
@@ -197,9 +182,7 @@ margin-top:20px;
 .skills{
 
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-
 gap:16px;
 
 }
@@ -207,11 +190,8 @@ gap:16px;
 .skill{
 
 background:#111;
-
 padding:14px;
-
 border-radius:8px;
-
 text-align:center;
 
 }
@@ -221,9 +201,7 @@ text-align:center;
 .projects{
 
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
 gap:24px;
 
 }
@@ -231,9 +209,7 @@ gap:24px;
 .project-img{
 
 width:100%;
-
 border-radius:10px;
-
 margin-top:10px;
 
 }
@@ -241,9 +217,7 @@ margin-top:10px;
 footer{
 
 text-align:center;
-
 padding:60px;
-
 opacity:.7;
 
 }
@@ -272,7 +246,10 @@ opacity:.7;
 
 <p>SQL • Excel • Power BI • R | Data Analytics</p>
 
-<a class="btn" href="Krishnandan_Sha.pdf" download>
+<a id="resumeBtn"
+class="resume-btn"
+href="Krishnandan_Sha.pdf"
+download>
 
 Download Resume
 
@@ -290,13 +267,8 @@ Download Resume
 
 <div class="card">
 
-I am a Data Analyst passionate about transforming raw data into meaningful insights that drive smarter business decisions. I specialize in data cleaning, analysis, and visualization using tools such as SQL, Excel, Power BI, and R. My analytical approach focuses on identifying patterns, uncovering trends, and translating complex datasets into clear, actionable insights.
-
-Through hands-on projects and professional certifications, I have developed strong capabilities in exploratory data analysis, dashboard creation, and statistical modeling. I have worked with real-world datasets including healthcare records and consumer behavior data to perform data preparation, feature engineering, predictive modeling, and business insight generation.
-
-My project work includes building machine learning models for stroke risk prediction and performing end-to-end behavioral analysis of bike-sharing users using R. These projects strengthened my ability to work across the full analytics workflow — from data cleaning and transformation to insight communication and decision support.
-
-I continuously improve my analytical skills through practical simulations and industry-style projects, focusing on solving real business problems using data. My goal is to contribute as a data analyst who not only analyzes data but also delivers insights that help organizations make informed, data-driven decisions.
+I am a Data Analyst passionate about transforming raw data into meaningful insights that drive smarter business decisions. I specialize in data cleaning, analysis, and visualization using tools such as SQL, Excel, Power BI, and R. My analytical approach focuses on identifying patterns, uncovering trends, and translating complex datasets into clear, actionable insights. Through hands-on projects and professional certifications, I have developed strong capabilities in exploratory data analysis, dashboard creation, and statistical modeling. I have worked with real-world datasets including healthcare records and consumer behavior data to perform data preparation, feature engineering, predictive modeling, and business insight generation.
+My project work includes building machine learning models for stroke risk prediction and performing end-to-end behavioral analysis of bike-sharing users using R. These projects strengthened my ability to work across the full analytics workflow — from data cleaning and transformation to insight communication and decision support. I continuously improve my analytical skills through practical simulations and industry-style projects, focusing on solving real business problems using data. My goal is to contribute as a data analyst who not only analyzes data but also delivers insights that help organizations make informed, data-driven decisions.
 
 </div>
 
@@ -386,10 +358,74 @@ video.addEventListener("ended",()=>{
 setTimeout(()=>{
 
 video.currentTime=0;
-
 video.play();
 
 },3000)
+
+});
+
+/* AUTO SCROLL CONTROL */
+
+let autoScrollEnabled=true;
+
+window.addEventListener("wheel",(e)=>{
+
+if(e.deltaY<0){
+
+autoScrollEnabled=false;
+
+}
+
+});
+
+/* SMOOTH SCROLL FUNCTION */
+
+function smoothScrollToAbout(){
+
+const target=document.getElementById("about");
+
+const targetPosition=target.offsetTop;
+
+let start=window.scrollY;
+
+let startTime=null;
+
+const duration=1100;
+
+function animation(currentTime){
+
+if(!startTime) startTime=currentTime;
+
+let progress=currentTime-startTime;
+
+let percent=Math.min(progress/duration,1);
+
+window.scrollTo(0,start+(targetPosition-start)*percent);
+
+if(progress<duration){
+
+requestAnimationFrame(animation);
+
+}
+
+}
+
+requestAnimationFrame(animation);
+
+}
+
+/* VIDEO END EVENTS */
+
+video.addEventListener("ended",()=>{
+
+if(autoScrollEnabled){
+
+smoothScrollToAbout();
+
+}
+
+document.getElementById("resumeBtn")
+.classList.add("floating");
 
 });
 
